@@ -103,6 +103,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                     contentDescription = null,
                     modifier = Modifier.align(Alignment.BottomEnd)
                 )
+
             }
 
         }
@@ -141,12 +142,12 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Card(
-                modifier = Modifier.size(width = 350.dp, height = 110.dp),
+                modifier = Modifier.size(width = 350.dp, height = 140.dp),
                 colors = CardDefaults.cardColors(Color.White)
             ) {
                 Row(modifier = Modifier.fillMaxWidth()) {
                     Text(modifier = Modifier.padding(top = 10.dp, start = 15.dp),
-                        text = "Account"
+                        text = "Conta"
                     )
                 }
                 Row(modifier = Modifier
@@ -175,7 +176,194 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                         )
 
                     }
+
+
                 }
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 10.dp, start = 5.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween){
+                    Row () {
+
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_person_outline_24),
+                            contentDescription = null
+                        )
+                        Text(
+                            modifier = Modifier.padding(start = 15.dp),
+                            text = "Dados Pessoais"
+                        )
+
+                    }
+                    Row {
+
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_arrow_forward_ios_24),
+                            contentDescription = null
+                        )
+
+                    }
+                }
+
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 10.dp, start = 5.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween){
+                    Row () {
+
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_person_outline_24),
+                            contentDescription = null
+                        )
+                        Text(
+                            modifier = Modifier.padding(start = 15.dp),
+                            text = "Dados Pessoais"
+                        )
+
+                    }
+                    Row {
+
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_arrow_forward_ios_24),
+                            contentDescription = null
+                        )
+
+                    }
+                }
+
+            }
+        }
+        Spacer(modifier = Modifier.height(30.dp))
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Card(
+                modifier = Modifier.size(width = 350.dp, height = 90.dp),
+                colors = CardDefaults.cardColors(Color.White)
+            ) {
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        modifier = Modifier.padding(top = 10.dp, start = 15.dp),
+                        text = "Notificação"
+                    )
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 10.dp, start = 5.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Row () {
+
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_person_outline_24),
+                            contentDescription = null
+                        )
+                        Text(
+                            modifier = Modifier.padding(start = 15.dp),
+                            text = "Notificações Pop-up"
+                        )
+
+                    }
+
+
+                    // É necessario colocar o switcher no lugar dessa flecha
+                    Row {
+
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_arrow_forward_ios_24),
+                            contentDescription = null
+                        )
+
+                    }
+
+                }
+            }
+        }
+        Spacer(modifier = Modifier.height(30.dp))
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Card(
+                modifier = Modifier.size(width = 350.dp, height = 140.dp),
+                colors = CardDefaults.cardColors(Color.White)
+            ) {
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        modifier = Modifier.padding(top = 10.dp, start = 15.dp),
+                        text = "Outros"
+                    )
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 10.dp, start = 5.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Row () {
+
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_person_outline_24),
+                            contentDescription = null
+                        )
+                        Text(
+                            modifier = Modifier.padding(start = 15.dp),
+                            text = "Contate-nos"
+                        )
+
+                    }
+
+
+                    Row {
+
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_arrow_forward_ios_24),
+                            contentDescription = null
+                        )
+
+                    }
+
+
+                }
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 10.dp, start = 5.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Row () {
+
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_person_outline_24),
+                            contentDescription = null
+                        )
+                        Text(
+                            modifier = Modifier.padding(start = 15.dp),
+                            text = "Política de privacidade"
+                        )
+
+                    }
+
+
+                    Row {
+
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_arrow_forward_ios_24),
+                            contentDescription = null
+                        )
+
+                    }
+
+
+                }
+
+
+
             }
         }
 
