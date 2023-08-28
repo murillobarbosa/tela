@@ -2,4 +2,16 @@
     <string name="app_name">profile_screen</string>
     <string name="profile">Perfil</string>
     <string name="profile_user">Masi Ramezanzade</string>
+    <string name="accont_user">Conta</string>
+    <string name="notification">Notificação</string>
+    <string name="others">Outros</string>
+    <string name="contact">Contate-nos</string>
+    <string name="politic">Política de privacidade</string>
+    <string name="notification_pop">Notificações Pop-up</string>
+    <string name="data">Dados Pessoais</string>
+    <string name="historic_query">Histórico de Consultas</string>
+
+
+
+
 </resources>

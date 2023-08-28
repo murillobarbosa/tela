@@ -5,32 +5,30 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -40,6 +38,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import br.senai.sp.jandira.profile_screen.ui.theme.Profile_screenTheme
 
 class MainActivity : ComponentActivity() {
@@ -142,13 +144,17 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Card(
-                modifier = Modifier.size(width = 350.dp, height = 140.dp),
+                modifier = Modifier.size(width = 350.dp, height = 120.dp),
                 colors = CardDefaults.cardColors(Color.White)
             ) {
                 Row(modifier = Modifier.fillMaxWidth()) {
-                    Text(modifier = Modifier.padding(top = 10.dp, start = 15.dp),
-                        text = "Conta"
+                    Text(
+                        modifier = Modifier.padding(top = 10.dp, start = 15.dp),
+                        text = stringResource(id = R.string.accont_user),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp
                     )
+
                 }
                 Row(modifier = Modifier
                     .fillMaxWidth()
@@ -163,7 +169,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                         )
                         Text(
                             modifier = Modifier.padding(start = 15.dp),
-                            text = "Dados Pessoais"
+                            text = stringResource(id = R.string.data)
                         )
 
                     }
@@ -186,12 +192,12 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                     Row () {
 
                         Image(
-                            painter = painterResource(id = R.drawable.baseline_person_outline_24),
+                            painter = painterResource(id = R.drawable.graph),
                             contentDescription = null
                         )
                         Text(
                             modifier = Modifier.padding(start = 15.dp),
-                            text = "Dados Pessoais"
+                            text = stringResource(id = R.string.historic_query)
                         )
 
                     }
@@ -205,31 +211,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                     }
                 }
 
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 10.dp, start = 5.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween){
-                    Row () {
 
-                        Image(
-                            painter = painterResource(id = R.drawable.baseline_person_outline_24),
-                            contentDescription = null
-                        )
-                        Text(
-                            modifier = Modifier.padding(start = 15.dp),
-                            text = "Dados Pessoais"
-                        )
-
-                    }
-                    Row {
-
-                        Image(
-                            painter = painterResource(id = R.drawable.baseline_arrow_forward_ios_24),
-                            contentDescription = null
-                        )
-
-                    }
-                }
 
             }
         }
@@ -246,7 +228,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 Row(modifier = Modifier.fillMaxWidth()) {
                     Text(
                         modifier = Modifier.padding(top = 10.dp, start = 15.dp),
-                        text = "Notificação"
+                        text = stringResource(id = R.string.notification),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp
                     )
                 }
                 Row(
@@ -258,26 +242,43 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                     Row () {
 
                         Image(
-                            painter = painterResource(id = R.drawable.baseline_person_outline_24),
+                            painter = painterResource(id = R.drawable.bell),
                             contentDescription = null
                         )
                         Text(
                             modifier = Modifier.padding(start = 15.dp),
-                            text = "Notificações Pop-up"
+                            text = stringResource(id = R.string.notification_pop)
                         )
 
                     }
 
+                    var switchCheckedState by remember { mutableStateOf(false) }
 
-                    // É necessario colocar o switcher no lugar dessa flecha
-                    Row {
+                    Switch(
+                        modifier = Modifier.padding(bottom = 20.dp),
+                        checked = switchCheckedState,
+                        onCheckedChange = {
+                            switchCheckedState = it
 
-                        Image(
-                            painter = painterResource(id = R.drawable.baseline_arrow_forward_ios_24),
-                            contentDescription = null
+                            if (it) {
+                                // Código para quando o Switch estiver ligado
+                            } else {
+                                // Código para quando o Switch estiver desligado
+                            }
+                        },
+
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = if (switchCheckedState)
+                                Color(182,182,246) else Color(217,217,217),
+                            checkedTrackColor = Color(182,182,246,51),
+                            checkedBorderColor = Color(182,182,246),
+                            uncheckedThumbColor = Color(217, 217, 217),
+                            uncheckedTrackColor = Color.White,
+                            disabledCheckedBorderColor = Color(182,182,246))
+
                         )
 
-                    }
+
 
                 }
             }
@@ -295,7 +296,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 Row(modifier = Modifier.fillMaxWidth()) {
                     Text(
                         modifier = Modifier.padding(top = 10.dp, start = 15.dp),
-                        text = "Outros"
+                        text = stringResource(id = R.string.others),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp
                     )
                 }
                 Row(
@@ -307,12 +310,12 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                     Row () {
 
                         Image(
-                            painter = painterResource(id = R.drawable.baseline_person_outline_24),
+                            painter = painterResource(id = R.drawable.letter),
                             contentDescription = null
                         )
                         Text(
                             modifier = Modifier.padding(start = 15.dp),
-                            text = "Contate-nos"
+                            text = stringResource(id = R.string.contact)
                         )
 
                     }
@@ -339,26 +342,15 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                     Row () {
 
                         Image(
-                            painter = painterResource(id = R.drawable.baseline_person_outline_24),
+                            painter = painterResource(id = R.drawable.verification),
                             contentDescription = null
                         )
                         Text(
                             modifier = Modifier.padding(start = 15.dp),
-                            text = "Política de privacidade"
+                            text = stringResource(id = R.string.politic)
                         )
 
                     }
-
-
-                    Row {
-
-                        Image(
-                            painter = painterResource(id = R.drawable.baseline_arrow_forward_ios_24),
-                            contentDescription = null
-                        )
-
-                    }
-
 
                 }
 
